@@ -1,0 +1,6 @@
+---
+- hosts: zookeeper-nodes
+  roles:
+    - sleighzy.zookeeper
+
+...

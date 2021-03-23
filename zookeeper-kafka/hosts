@@ -1,0 +1,20 @@
+[control]
+controller ansible_connection=local
+
+[zookeeper-nodes]
+kafka1 ansible_ssh_user=root ansible_ssh_pass='freebsd' ansible_ssh_port=22 zookeeper_id=1
+kafka2 ansible_ssh_user=root ansible_ssh_pass='freebsd' ansible_ssh_port=22 zookeeper_id=2
+kafka3 ansible_ssh_user=root ansible_ssh_pass='freebsd' ansible_ssh_port=22 zookeeper_id=3
+
+[zookeeper-nodes:vars]
+somevar=somevalue
+
+
+[kafka-nodes]
+kafka1 ansible_ssh_user=root ansible_ssh_pass='freebsd' ansible_ssh_port=22 kafka_broker_id=1 kafka_listener_hostname=kafka1
+kafka2 ansible_ssh_user=root ansible_ssh_pass='freebsd' ansible_ssh_port=22 kafka_broker_id=2 kafka_listener_hostname=kafka2
+kafka3 ansible_ssh_user=root ansible_ssh_pass='freebsd' ansible_ssh_port=22 kafka_broker_id=3 kafka_listener_hostname=kafka3
+
+[kafka-nodes:vars]
+somevar=somevalue
+

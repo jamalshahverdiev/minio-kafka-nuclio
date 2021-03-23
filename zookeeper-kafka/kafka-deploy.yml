@@ -1,0 +1,6 @@
+---
+- hosts: kafka-nodes
+  roles:
+    - sleighzy.kafka
+
+...
