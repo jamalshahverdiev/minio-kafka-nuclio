@@ -104,3 +104,9 @@ Consumer group 'nuclio-consumer-group' has no active members.
 GROUP                 TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
 nuclio-consumer-group nuclioevents    0          1               1               0               -               -               -
 ```
+
+#### To delete consumer group we can use the following command:
+```bash
+$ /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server 192.168.184.73:9092 --delete --group nuclio-consumer-group
+Deletion of requested consumer groups ('nuclio-consumer-group') was successful.
+```
