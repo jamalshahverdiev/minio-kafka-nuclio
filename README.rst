@@ -1,5 +1,5 @@
 *************************************************************
-Niclio serverless functions with Minio and Kafka clusters
+Nuclio serverless functions with Minio and Kafka clusters
 *************************************************************
 
 * `Kafka and Zookeeper install configure <https://github.com/jamalshahverdiev/minio-kafka-nuclio/tree/master/zookeeper-kafka>`_
