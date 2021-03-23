@@ -26,7 +26,6 @@ spec:
         brokers:
           - '192.168.184.71:9092'
           - '192.168.184.72:9092'
-          - '192.168.184.73:9092'
         consumerGroup: nuclio-consumer-group
         topics:
           - nuclioevents
