@@ -1,0 +1,33 @@
+apiVersion: "nuclio.io/v1"
+kind: NuclioFunction
+metadata:
+  name: send-email-if-pdf-uploaded-to-s3
+  namespace: nuclio
+  labels:
+    nuclio.io/project-name: nuclio-kafka-minio
+spec:
+  description: Email lambda function
+  env:
+  - name: RANDSTRING_LEN
+    value: 12
+  handler: "lambda_function_file:handler_function_name"
+  runtime: "python:3.8"
+  resources: {}
+  build:
+    commands:
+    - "pip install rand-string minio"
+  triggers:
+    kafka-trigger:
+      class: ""
+      kind: kafka-cluster
+      name: kafka-trigger
+      maxWorkers: 1
+      attributes:
+        brokers:
+          - '192.168.184.71:9092'
+          - '192.168.184.72:9092'
+          - '192.168.184.73:9092'
+        consumerGroup: nuclio-consumer-group
+        topics:
+          - nuclioevents
+        workerAllocationMode: pool
