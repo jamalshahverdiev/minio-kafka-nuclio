@@ -1,0 +1,26 @@
+[Unit]
+Description=MinIO storage object API
+After=network.target
+
+[Service]
+Environment="MINIO_ACCESS_KEY=superadmin"
+Environment="MINIO_SECRET_KEY=M1n10Suer2dm1np244"
+User=root
+Group=root
+PIDFile=/var/run/minio/minio.pid
+PermissionsStartOnly=true
+ExecStartPre=-/bin/mkdir -p /var/run/minio /var/log/minio /miniodata
+ExecStart=/bin/bash -c "/usr/sbin/minio server --address :9001 http://minio0{1...4}/miniodata >> /var/log/minio/minio.log 2>&1 & echo $! > /var/run/minio/minio.pid"
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitAS=infinity
+LimitFSIZE=infinity
+KillMode=process
+KillSignal=SIGTERM
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target
+
