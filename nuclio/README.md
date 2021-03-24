@@ -40,7 +40,7 @@ f5f4fe0b43b8   nuclio/processor-send-email-if-pdf-uploaded-to-s3:latest   "proce
 #### The `function.yaml` have important keys which explaining usage of serverless functions. In the key `handler: "lambda_function_file:handler_function_name"`, `lambda_function_file` is the name of the main serverless code file and `handler_function_name` is the function name which will get 2 parameters `context` and `event`. `runtime` is the environment where our serverless function will work(`nuclio` starts docker in docker to run our function). In the `commands` key we can run commands inside of our container to get dependencies of our python code. In the `brokers` we must define list of the KAFKA node IP addresses, `consumerGroup` the name of the consumer group which we have created before and `topics` the name of the Kafka topic where will be listened for the events.
 - `function.yaml` file name must be exactly as this because `nuctl` command search this. 
 
-#### To test just execute `python3 upload-to-minio.py` file and loog at the docker logs with the following command:
+#### To test just execute `python3 upload-to-minio.py` file and look at the docker logs with the following command:
 ```bash
 $ docker logs -f nuclio-nuclio-send-email-if-pdf-uploaded-to-s3
 ```
