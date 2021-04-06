@@ -65,7 +65,7 @@ $ mc event list minio/nuclioevents
 arn:minio:sqs::1:kafka   s3:ObjectCreated:*,s3:ObjectRemoved:*,s3:ObjectAccessed:*   Filter: suffix=".pdf"
 ```
 
-**Note:** Delete and use only specified event for some specific file extension we can use the following command:
+**Note:** Delete all events in the `nucliolambdas` bucket. Activate only `put` based events for the `pdf` type documents on the `nucliolambdas` bucket:
 ```bash
 $ mc event remove minio/nucliolambdas --force
 $ mc event add nucliostore/nucliolambdas/ arn:minio:sqs::1:kafka -p --event put --suffix .pdf
