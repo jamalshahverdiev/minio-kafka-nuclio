@@ -65,6 +65,12 @@ $ mc event list minio/nuclioevents
 arn:minio:sqs::1:kafka   s3:ObjectCreated:*,s3:ObjectRemoved:*,s3:ObjectAccessed:*   Filter: suffix=".pdf"
 ```
 
+**Note:** Delete and use only specified event for some specific file extension we can use the following command:
+```bash
+$ mc event remove minio/nucliolambdas --force
+$ mc event add nucliostore/nucliolambdas/ arn:minio:sqs::1:kafka -p --event put --suffix .pdf
+```
+
 #### Apply `nuclio.policy` file to create new policy with name `nuclio_policy` which will be applied to the `nuclioevents` bucket:
 ```bash
 $ mc admin policy add minio nuclio_policy nuclio.policy --debug
